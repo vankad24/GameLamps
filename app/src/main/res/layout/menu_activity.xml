@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menu_layout"
+    android:background="@android:color/darker_gray"
+    >
+
+
+    <com.example.lamps.DrawMenu
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/play"
+        style="@style/Round"
+        android:onClick="menuClick"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@id/play_button"
+    android:layout_centerHorizontal="true"
+    android:onClick="menuClick">
+    <ImageButton
+        android:id="@+id/settings"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/settings"
+        style="@style/Round"
+        android:layout_marginRight="15dp"
+        android:onClick="menuClick"/>
+    <ImageButton
+        android:id="@+id/about"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/about"
+        style="@style/Round"
+        android:layout_marginLeft="15dp"
+        android:onClick="menuClick"/>
+</LinearLayout>
+    <ImageButton
+        android:id="@+id/out"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/exit"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        style="@style/Round"
+        android:onClick="menuClick"/>
+
+</RelativeLayout>

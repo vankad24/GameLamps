@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/color_extra_settings">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <Switch
+        android:id="@+id/cheatmode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Чит режим \n (нажать вне игрового поля)"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <Switch
+        android:id="@+id/guaranteed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Гарантированный выигрыш"
+        android:textSize="16sp"
+        android:layout_margin="30dp"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="Отступ между лампочками" />
+
+    <SeekBar
+        android:id="@+id/seekSpace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="35"/>
+
+    <TextView
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="Цвет интерфейса" />
+
+    <SeekBar
+        android:id="@+id/seekBackcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="306"
+        />
+
+    <TextView
+        android:id="@+id/backcolor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Ок"
+        android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+</ScrollView>

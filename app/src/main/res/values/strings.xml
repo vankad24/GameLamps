@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Лампочки</string>
+    <string name="settings">Настройки</string>
+    <string name="game">Игра</string>
+    <string name="about">Об игре</string>
+    <string name="game_modes">Режимы игры</string>
+    <string name="back">Назад</string>
+    <string name="replay">Заново</string>
+    <string name="extra_settings">Доп настройки</string>
+    <string name="play">Играть</string>
+    <string name="save">Сохранить</string>
+    <string name="r">Радиус</string>
+    <string name="width">Ширина</string>
+    <string name="height">Высота</string>
+    <string name="field_size">Размеры поля</string>
+    <string name="lines">Линии</string>
+    <string name="cross">Крестик</string>
+    <string name="plus">Плюсик</string>
+    <string name="color">Цвет</string>
+    <string name="task">Закрасте все лампочки</string>
+    <string name="reset">Сброс настроек</string>
+
+
+    <string name="about_text">
+<b>Игра Лампочки</b> \n
+
+<b>Версия: </b> 14.0\n
+
+<b>Автор программы: </b>\n Иван Донской \n
+
+<b>Описание:</b>\n
+
+Игра "Лампочки" - это доработанный проект простой игры в целое приложение. \n
+Она создана для развлечения, веселого времяпровождения и, конечно, ломания мозгов. Удачи!\n \n
+
+По любым вопрсам, в том числе и о написании кода обращайтесь сюда: \n
+ https://vk.com/vankad24  \n \n
+ <i>Создано при поддержке \n
+  IT school Samsung</i>\n \n
+<b><i>©V idea \n Все права не защищены.</i></b>
+</string>
+</resources>

@@ -55,8 +55,7 @@ public class DrawLamps extends View {
         stroke.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));
         paint1.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));
         paint2.setColor(Color.argb(70,RGB[0],RGB[1],RGB[2]));
-
-        if (win && nowTime - winTime > 1000) start = true;
+        
         if (start) start();
 
         lampX = r + ro;
@@ -95,6 +94,7 @@ public class DrawLamps extends View {
             }
         }
         start = false;
+        win = false;
         startTime=System.currentTimeMillis();
     }
 
@@ -136,6 +136,7 @@ public class DrawLamps extends View {
             winTime = System.currentTimeMillis();
             seconds=(int) (winTime-startTime)/1000;
             canvas.drawText(seconds/60+" мин "+seconds%60+" сек",250,780,paint1);
+            start();
         }
 
     }

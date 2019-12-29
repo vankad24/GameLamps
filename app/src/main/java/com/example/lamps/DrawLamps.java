@@ -10,6 +10,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import java.util.Random;
 
@@ -29,11 +31,11 @@ public class DrawLamps extends View {
         //Берем переменные из MainActivity
         MainActivity a = (MainActivity) context;
         mode=a.mode;
-        r=a.radius;
+        r=a.radius*MenuActivity.indexOfDisplay;
         RGB=a.RGB;
         cheat=a.cheatmode;
         guaranteedwin=a.guaranteedwin;
-        ro=a.space;
+        ro=a.space*MenuActivity.indexOfDisplay;
         n=a.max_in_height;
         m=a.max_in_width;
     }
@@ -55,7 +57,7 @@ public class DrawLamps extends View {
         stroke.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));
         paint1.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));
         paint2.setColor(Color.argb(70,RGB[0],RGB[1],RGB[2]));
-        
+
         if (start) start();
 
         lampX = r + ro;
@@ -127,16 +129,18 @@ public class DrawLamps extends View {
             }
             //Выводим изображения
             background_win = BitmapFactory.decodeResource(res, R.drawable.background_win);
-            background_win = Bitmap.createScaledBitmap(background_win, 550, 800, false);
-            image_win = Bitmap.createScaledBitmap(image_win, 500, 500, false);
-            canvas.drawBitmap(background_win, (canvas.getWidth() - 550) / 2, 30, null);
-            canvas.drawBitmap(image_win, (canvas.getWidth() - 550) / 2 + 25, 170, null);
+            int heightOfImageWin=800*MenuActivity.indexOfDisplay;
+            int widthOfImageWin=550*MenuActivity.indexOfDisplay;
+            background_win = Bitmap.createScaledBitmap(background_win, widthOfImageWin,heightOfImageWin , false);
+            image_win = Bitmap.createScaledBitmap(image_win, 500*MenuActivity.indexOfDisplay,500*MenuActivity.indexOfDisplay , false);
+            canvas.drawBitmap(background_win, (getWidth() - widthOfImageWin) / 2, (getHeight()-heightOfImageWin) / 2, null);
+            canvas.drawBitmap(image_win, (getWidth() - widthOfImageWin) / 2 + 25*MenuActivity.indexOfDisplay, (getHeight()-heightOfImageWin) / 2+150*MenuActivity.indexOfDisplay, null);
             //Переводим и выводим время в мин и сек
-            paint1.setTextSize(40);
+            paint1.setTextSize(40*MenuActivity.indexOfDisplay);
             winTime = System.currentTimeMillis();
             seconds=(int) (winTime-startTime)/1000;
-            canvas.drawText(seconds/60+" мин "+seconds%60+" сек",250,780,paint1);
-            start();
+            canvas.drawText(seconds/60+" мин "+seconds%60+" сек",(getWidth() - widthOfImageWin) / 2 + 160*MenuActivity.indexOfDisplay,getHeight()-((getHeight()-heightOfImageWin) / 2+ 50*MenuActivity.indexOfDisplay),paint1);
+            start=true;
         }
 
     }
@@ -149,7 +153,11 @@ public class DrawLamps extends View {
             touchY = event.getY();
             lastTime = nowTime;
             if (touchX > m * (2 * r + ro) || touchY > n * (2 * r + ro)) {
-                if (cheat) cheatmode = !cheatmode;}
+                if (cheat){
+                    cheatmode = !cheatmode;
+                    Toast.makeText(getContext(),"Чит режим "+(cheatmode?"вкл":"выкл"),Toast.LENGTH_SHORT).show();
+                }
+            }
             else statusChange((int) (touchY / (2 * r + ro)), (int) (touchX / (2 * r + ro)), false);
             invalidate();
         }

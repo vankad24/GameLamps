@@ -13,12 +13,14 @@ import androidx.annotation.Nullable;
 
 public class DrawMenu extends View {
 
-    int r = 50, ro = 25, width, height;
+    int r ,indexOfDisplay, ro , width, height;
     double touchX = -100, touchY = -100;
     byte[][] lamps = new byte[4][3];
     long lastTime = 0, nowTime;
     boolean start=true,win=false;
-
+    Paint paint1 = new Paint();
+    Paint paint2 = new Paint();
+    Paint stroke = new Paint();
     public DrawMenu(Context context) {
         super(context);
     }
@@ -27,27 +29,11 @@ public class DrawMenu extends View {
         super(context, attrs);
         a=(MenuActivity) context;
     }
-    Paint paint1 = new Paint();
-    Paint paint2 = new Paint();
-    Paint stroke = new Paint();
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        height = canvas.getHeight();
-        width = canvas.getWidth();
-        MenuActivity.height=height-166; //-166 т.к. еще ActionBar сверху
-        MenuActivity.width=width;
-        stroke.setStrokeWidth(4);
-
-
-        stroke.setStyle(Paint.Style.STROKE);
-        paint1.setStyle(Paint.Style.FILL);
-        paint2.setStyle(Paint.Style.FILL);
-        paint1.setAntiAlias(true);   //Сглаживание
-        paint2.setAntiAlias(true);
-        stroke.setAntiAlias(true);
 
         if (start)start();
         //Рисуем кружки по углам
@@ -90,8 +76,6 @@ public class DrawMenu extends View {
             if (lamps[i][2]==0) canvas.drawCircle(Math.abs(shiftX-second_circle),Math.abs(shiftY-first_circle), r, paint1);
             else canvas.drawCircle(Math.abs(shiftX-second_circle),Math.abs(shiftY-first_circle), r, paint2);
         }
-
-        checkWin();
     }
 
     @Override
@@ -104,6 +88,7 @@ public class DrawMenu extends View {
             if ((touchX < 2 * (2 * r + ro) || touchX > width - 2 * (2 * r + ro)) && (touchY < 2 * (2 * r + ro) || touchY > height - 2 * (2 * r + ro)))
                 statusChange();
             invalidate();
+            checkWin();
         }
         return true;
     }
@@ -154,6 +139,21 @@ public class DrawMenu extends View {
     }
     //Начальное состояние лампочек
     void start(){
+        height = getHeight();
+        width = getWidth();
+        indexOfDisplay=height/1000;
+        MenuActivity.indexOfDisplay=indexOfDisplay;
+        MenuActivity.height=height-166*MenuActivity.indexOfDisplay; //-166 т.к. еще ActionBar сверху
+        MenuActivity.width=width;
+        stroke.setStrokeWidth(4*indexOfDisplay);
+        stroke.setStyle(Paint.Style.STROKE);
+        paint1.setStyle(Paint.Style.FILL);
+        paint2.setStyle(Paint.Style.FILL);
+        paint1.setAntiAlias(true);   //Сглаживание
+        paint2.setAntiAlias(true);
+        stroke.setAntiAlias(true);
+        r=50*indexOfDisplay;
+        ro=25*indexOfDisplay;
         for (int i = 0; i <lamps.length ; i++) {
             for (int j = 0; j <lamps[0].length ; j++) {
                 if (j!=1)

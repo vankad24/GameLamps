@@ -14,13 +14,14 @@ public class MenuActivity extends AppCompatActivity {
     int mode=3,radius,backcolor,space,color, max_in_height,max_in_width;
     int[] RGB_back;
     boolean cheatmode=false, guaranteedwin=true;
-    static int height,width;
+    static int height,width,indexOfDisplay;
     RelativeLayout menuLayout;
     public static final String APP_Settings = "settings";
     private SharedPreferences mSettings;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.menu_activity);
         //Устанавливаем сохраненные настройки
         mSettings = getSharedPreferences(APP_Settings, MODE_PRIVATE);
@@ -29,7 +30,6 @@ public class MenuActivity extends AppCompatActivity {
         menuLayout = (RelativeLayout) findViewById(R.id.menu_layout);
         RGB_back=convertToArrayColor(backcolor);
         menuLayout.setBackgroundColor(Color.rgb(RGB_back[0],RGB_back[1],RGB_back[2]));
-
         max_in_height =height/(2*radius+space);
         max_in_width =width/(2*radius+space);
 
@@ -65,8 +65,8 @@ public class MenuActivity extends AppCompatActivity {
                     i.putExtra("win",guaranteedwin);
                     i.putExtra("cheat",cheatmode);
                     i.putExtra("space",space);
-                    if (max_in_height==0)max_in_height =height/(2*radius+space);
-                    if (max_in_width==0)max_in_width =width/(2*radius+space);
+                    if (max_in_height==0)max_in_height =height/((2*radius+space)*MenuActivity.indexOfDisplay);
+                    if (max_in_width==0)max_in_width =width/((2*radius+space)*MenuActivity.indexOfDisplay);
                     i.putExtra("height",max_in_height);
                     i.putExtra("width",max_in_width);
                     startActivity(i);
@@ -81,8 +81,8 @@ public class MenuActivity extends AppCompatActivity {
                     i.putExtra("win",guaranteedwin);
                     i.putExtra("cheat",cheatmode);
                     i.putExtra("space",space);
-                    if (max_in_height==0)max_in_height =height/(2*radius+space);
-                    if (max_in_width==0)max_in_width =width/(2*radius+space);
+                    if (max_in_height==0)max_in_height =height/((2*radius+space)*MenuActivity.indexOfDisplay);
+                    if (max_in_width==0)max_in_width =width/((2*radius+space)*MenuActivity.indexOfDisplay);
                     i.putExtra("height",max_in_height);
                     i.putExtra("width",max_in_width);
                     startActivityForResult(i,1);

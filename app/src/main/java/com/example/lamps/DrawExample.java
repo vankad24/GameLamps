@@ -34,28 +34,29 @@ public class DrawExample extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         RGB = a.RGB;
-        radius=a.radius;
-        heignt = canvas.getHeight();
-        width = canvas.getWidth();
+        radius=a.radius*MenuActivity.indexOfDisplay;
+        heignt = getHeight();
+        width = getWidth();
         x0=width/2;
         y0=heignt/2;
-        rect.setStrokeWidth(4);
+        rect.setStrokeWidth(4*MenuActivity.indexOfDisplay);
 
         RectF rectF = new RectF(3,3,width-3,heignt-3);
         rect.setAntiAlias(true);
         rect.setColor(Color.WHITE);
         rect.setStyle(Paint.Style.FILL);
         //Рисуем задний фон
-        canvas.drawRoundRect(rectF,50,50,rect);
+        int corner = 50*MenuActivity.indexOfDisplay;
+        canvas.drawRoundRect(rectF,corner,corner,rect);
         rect.setColor(Color.GRAY);
         rect.setStyle(Paint.Style.STROKE);
-        canvas.drawRoundRect(rectF,50,50,rect);
+        canvas.drawRoundRect(rectF,corner,corner,rect);
 
         stroke.setStyle(Paint.Style.STROKE);
         paint1.setStyle(Paint.Style.FILL);
         paint2.setStyle(Paint.Style.FILL);
 
-        stroke.setStrokeWidth(4);
+        stroke.setStrokeWidth(4*MenuActivity.indexOfDisplay);
         stroke.setAntiAlias(true);
         stroke.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));
         paint1.setColor(Color.rgb(RGB[0],RGB[1],RGB[2]));

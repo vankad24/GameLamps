@@ -76,8 +76,8 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         height=MenuActivity.height;
         width=MenuActivity.width;
 
-        max_in_height =height/(2*radius+space);
-        max_in_width =width/(2*radius+space);
+        max_in_height =height/((2*radius+space)*MenuActivity.indexOfDisplay);
+        max_in_width =width/((2*radius+space)*MenuActivity.indexOfDisplay);
 
         seekWidth.setOnSeekBarChangeListener(this);
         seekHeight.setOnSeekBarChangeListener(this);
@@ -152,8 +152,8 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
             case R.id.seekBar_radius:
                 radius = seekBar.getProgress() + 30;
                 radius_progress.setText(String.valueOf(radius));
-                if (max_in_height!=height/(2*radius+space)) max_in_height = height/(2*radius+space);
-                if (max_in_width!=width/(2*radius+space)) max_in_width =width/(2*radius+space);
+                if (max_in_height!=height/((2*radius+space)*MenuActivity.indexOfDisplay)) max_in_height = height/((2*radius+space)*MenuActivity.indexOfDisplay);
+                if (max_in_width!=width/((2*radius+space)*MenuActivity.indexOfDisplay)) max_in_width =width/((2*radius+space)*MenuActivity.indexOfDisplay);
                 seekHeight.setMax(max_in_height-1);
                 seekHeight.setProgress(max_in_height-1);
                 seekWidth.setMax(max_in_width-1);
